@@ -720,7 +720,9 @@ inspired styles to your `iron-data-table`.
         // Toggle shadow when at the top
         this.toggleClass("scrolled", this.$.list.scrollTop >= 1, this.$.header);
 
-        this._currentPage = Math.max(0, Math.floor(this.$.list.scrollTop / this.$.list._physicalAverage / this.pageSize));
+        this._currentPage = this.$.list._physicalAverage > 0 ?
+          Math.max(0, Math.floor(this.$.list.scrollTop / this.$.list._physicalAverage / this.pageSize))
+        : 0;
       },
 
       /**
